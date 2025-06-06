@@ -1,7 +1,6 @@
 services:
   - type: web
     name: georesgate-java
-    buildCommand: ./mvnw clean package -DskipTests
-    startCommand: java -jar target/quarkus-app/quarkus-run.jar
+    env: docker
     plan: free
     region: oregon
