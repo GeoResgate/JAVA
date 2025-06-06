@@ -1,7 +1,7 @@
 services:
   - type: web
     name: georesgate-java
-    env: java
+    runtime: java
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/quarkus-app/quarkus-run.jar
     plan: free
