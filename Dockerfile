@@ -1,1 +1,24 @@
-FROM maven:3.9-eclipse-temurin-17 AS buildWORKDIR /appCOPY pom.xml .COPY src ./srcRUN mvn clean package -DskipTestsFROM eclipse-temurin:17-jdkWORKDIR /appCOPY --from=build /app/target/quarkus-app/lib /app/libCOPY --from=build /app/target/quarkus-app/*.jar /app/COPY --from=build /app/target/quarkus-app/app /app/appCOPY --from=build /app/target/quarkus-app/quarkus /app/quarkusEXPOSE 8080CMD ["java", "-jar", "quarkus-run.jar"]
+FROM maven:3.9-eclipse-temurin-17 AS build
+WORKDIR /app
+
+
+COPY pom.xml .
+COPY src ./src
+
+
+RUN mvn clean package -DskipTests
+
+
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+
+
+COPY --from=build /app/target/quarkus-app/lib /app/lib
+COPY --from=build /app/target/quarkus-app/*.jar /app/
+COPY --from=build /app/target/quarkus-app/app /app/app
+COPY --from=build /app/target/quarkus-app/quarkus /app/quarkus
+
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "quarkus-run.jar"]
