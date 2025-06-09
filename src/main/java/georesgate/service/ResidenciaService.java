@@ -47,9 +47,9 @@ public class ResidenciaService {
         antiga.setEndereco(nova.getEndereco());
         antiga.setNumero(nova.getNumero());
         antiga.setCep(nova.getCep());
-        antiga.setTipo(nova.getTipo());
-        antiga.setNumero_andares(nova.getNumero_andares());
-        antiga.setGaragem_subterranea(nova.getGaragem_subterranea());
+        antiga.setTipoResidencia(nova.getTipoResidencia()); // ⚠️ Corrigido
+        antiga.setNumeroAndares(nova.getNumeroAndares());   // ⚠️ Corrigido
+        antiga.setGaragemSubterranea(nova.getGaragemSubterranea()); // ⚠️ Corrigido
 
         return true;
     }

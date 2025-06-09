@@ -13,12 +13,18 @@ public class Residencia {
     private String endereco;
     private String numero;
     private String cep;
-    private String tipo;
-    private Integer numero_andares;
-    private Boolean garagem_subterranea;
+
+    @Column(name = "tipo") // Corrigido: o nome real da coluna é "tipo"
+    private String tipoResidencia;
+
+    @Column(name = "numero_andares")
+    private Integer numeroAndares;
+
+    @Column(name = "garagem_subterranea")
+    private String garagemSubterranea;
 
     @OneToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     private Usuario usuario;
 
     // Getters e Setters
@@ -55,28 +61,28 @@ public class Residencia {
         this.cep = cep;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoResidencia() {
+        return tipoResidencia;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoResidencia(String tipoResidencia) {
+        this.tipoResidencia = tipoResidencia;
     }
 
-    public Integer getNumero_andares() {
-        return numero_andares;
+    public Integer getNumeroAndares() {
+        return numeroAndares;
     }
 
-    public void setNumero_andares(Integer numero_andares) {
-        this.numero_andares = numero_andares;
+    public void setNumeroAndares(Integer numeroAndares) {
+        this.numeroAndares = numeroAndares;
     }
 
-    public Boolean getGaragem_subterranea() {
-        return garagem_subterranea;
+    public String getGaragemSubterranea() {
+        return garagemSubterranea;
     }
 
-    public void setGaragem_subterranea(Boolean garagem_subterranea) {
-        this.garagem_subterranea = garagem_subterranea;
+    public void setGaragemSubterranea(String garagemSubterranea) {
+        this.garagemSubterranea = garagemSubterranea;
     }
 
     public Usuario getUsuario() {
