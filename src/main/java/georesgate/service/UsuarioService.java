@@ -35,13 +35,10 @@ public class UsuarioService {
         usuarioExistente.setNome(novoUsuario.getNome());
         usuarioExistente.setCpf(novoUsuario.getCpf());
         usuarioExistente.setTelefone(novoUsuario.getTelefone());
-        usuarioExistente.setMembros_familia(novoUsuario.getMembros_familia());
-        usuarioExistente.setEndereco(novoUsuario.getEndereco());
-        usuarioExistente.setCep(novoUsuario.getCep());
-        usuarioExistente.setNumero(novoUsuario.getNumero());
-        usuarioExistente.setTipo_residencia(novoUsuario.getTipo_residencia());
-        usuarioExistente.setNumero_andares(novoUsuario.getNumero_andares());
-        usuarioExistente.setGaragem_subterranea(novoUsuario.getGaragem_subterranea());
+        usuarioExistente.setMembrosFamilia(novoUsuario.getMembrosFamilia());
+
+        // Se quiser atualizar a residência, você deve acessar via:
+        // usuarioExistente.getResidencia().setTipoResidencia(...); etc.
 
         return true;
     }
